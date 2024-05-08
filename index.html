@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ESSENTIAL -->
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- GENERAL -->
+  <title>Bhandara</title>
+  <meta name="title" content="Ram Mandir Bhandara" />
+  <style>
+    body {
+      max-width: 100vw;
+      max-height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .canavs {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .score {
+      position: absolute;
+      top: 20px;
+      right: 0;
+      max-width: 100px;
+      width: 100%;
+    }
+
+    .score img {
+      width: 100%;
+    }
+
+    .score span {
+      position: absolute;
+      top: calc(50% - 1px);
+      transform: translateY(-50%);
+      left: 43px;
+      text-align: left;
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .capacity-btn-grp {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .capacity-btn-grp button {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      transform: scale(0);
+      transition: 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .capacity-btn-grp button.visible {
+      transform: scale(1);
+    }
+
+    .capacity-btn-grp button img.buttonImage {
+      max-width: 120px;
+      filter: saturate(0);
+      transition: 0.3s ease-in-out;
+      box-shadow: 0 0 15px 2px #00000082;
+      border-radius: 27px;
+    }
+
+    .capacity-btn-grp button img.buttonImage.active {
+      filter: saturate(1);
+    }
+
+    .capacity-btn-grp div {
+      position: relative;
+    }
+
+    .hand-image {
+      width: 80px;
+      position: absolute;
+      right: -20px;
+      bottom: -20px;
+      z-index: 1;
+      visibility: hidden;
+      animation: handAnimation 1.5s infinite;
+    }
+
+    @keyframes handAnimation {
+      0% {
+        right: -20px;
+        bottom: -20px;
+      }
+
+      50% {
+        right: -5px;
+        bottom: -5px;
+      }
+
+      100% {
+        right: -20px;
+        bottom: -20px;
+      }
+    }
+
+    .hand-image.handVisible {
+      visibility: visible;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="score">
+    <img src="public/assets/images/flower counter.png" alt="">
+    <span id="flowerCount">0</span>
+  </div>
+
+  <div class="capacity-btn-grp">
+    <div>
+      <button class="visible">
+        <img src="public/assets/images/upgrade capacity_active.png" id="btnCapacity" class="buttonImage" alt="">
+        <img src="public/assets/images/hand-image.png" class="hand-image" id="capacityHand" alt="">
+      </button>
+    </div>
+    <div>
+      <button class="visible">
+        <img src="public/assets/images/add carpet_active.png" id="btnCarpet" class="buttonImage" alt="">
+        <img src="public/assets/images/hand-image.png" class="hand-image" id="carpetHand" alt="">
+      </button>
+    </div>
+  </div>
+
+  <div class="canavs" id="canvas-parent">
+    <canvas id="canvas"></canvas>
+  </div>
+  <script type="module" src="src/js/index.js"></script>
+</body>
+
+</html>
